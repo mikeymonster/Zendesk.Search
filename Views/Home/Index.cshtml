@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+
+@model SearchViewModel
+
+<h1 class="display-4">Search</h1>
+
+<div class="row">
+    <div class="col-8">
+        <form>
+            <input type="hidden" asp-for="User" />
+            <input type="hidden" asp-for="Password" />
+
+            <div class="form-group">
+                <label asp-for="ItemsPerPage">Items per page</label>
+                <input type="text" class="form-control" asp-for="ItemsPerPage">
+            </div>
+
+            <div class="input-group">
+                <input type="text" class="form-control" id="search-input">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="search-button">Button</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8">
+        <h4><span id="search-results-count"></span> search results</h4>
+        <div id="search-results">
+            <ul id="search-results-list">
+            </ul>
+        </div>
+        <div>
+            <a id="search-results-prev" style="display: none;" href=""><span>&lt;&lt;&lt;Prev</span></a>
+            <a id="search-results-next" style="display: none;" href=""><span>Next &gt;&gt;&gt;</span></a>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>Raw JSON search results</h4>
+        <div id="raw-search-results">
+        </div>
+    </div>
+</div>
+
+@section jsfiles{
+    <script src="~/js/search.js"></script>
+}
