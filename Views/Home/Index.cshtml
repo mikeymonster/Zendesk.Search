@@ -47,6 +47,131 @@
     </div>
 </div>
 
+<div class="row">
+
+    <div class="section-subscribe">
+        <div>
+            <button id="new-follow" aria-expanded="false" aria-haspopup="menu" type="button">Follow</button>
+        </div>
+    </div>
+
+    <div id="follow_menu" class="tl-none">
+        <div style="position: absolute; left: 800.422px; top: 274px;">
+            <div class="tl-menu-container"
+                 aria-labelledby="81015c6d-6567-4d3e-9ced-a9ecc4e140cc"
+                 role="menu"
+                 tabindex="-1">
+                <div class="tl-menu-item-inner"
+                     data-valuetext="New articles"
+                     role="menuitem"
+                     tabindex="-1">
+                    New articles
+                    <span id="selection-tick" class="tl-none">
+                        <span class="tl-menu-tick-seperator"></span>
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 7l3 3 7-7">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div id="community">
+        <h2>Topics</h2>
+
+        <ul id="60000750439slideContainer">
+            <li>List goes here</li>
+        </ul>
+
+
+    </div>
+</div>
+
 @section jsfiles{
     <script src="~/js/search.js"></script>
+    <script src="~/js/follow.js"></script>
+    
+    @* NOTE - had to move script AFTER ul  *@
+    <script>
+        const id = 60000750439;
+
+        console.log(`id = ${id}`);
+        console.log(`target element id =  ${id}slideContainer`);
+        console.log(" .. or target element id = {{id}}slideContainer");
+
+        //https://developer.zendesk.com/rest_api/docs/help_center/posts
+        var posts =
+            [
+                {
+                    id: 123,
+                    html_url: 'https://somewhere.com',
+                    title: 'First post!',
+                    details: "I was first! My post is the best post everrrrr!!.",
+                    updated_at: '2020-09-01',
+                },
+                {
+                    id: 456,
+                    html_url: 'https://elsewhere.com',
+                    title: 'Second post :(',
+                    details: "Some words to know me by, please don't forget me. There are many words, but of all the words, these are definitely mine.",
+                                        updated_at: '2020-09-02',
+                }
+            ];
+
+        //console.log(`date: {itm.updated_at}`);
+
+        //var back30Days=moment().subtract(30, 'days').format("dddd, MMMM Do YYYY, h:mm:ss p");
+        //console.log('back30Days --> ' + back30Days);
+
+        //const mom = moment().format();
+        //console.log(mom);
+        
+        //postsList += '<li>';
+        //postsList += '<a class="govuk-link" href="' + itm.html_url + '" id="' + itm.id + '">' +
+        //    itm.title + "" + '</a><span class="tl-text--grey">' + " (" + moment(moment(itm.updated_at).format("YYYYMMDD"), "YYYYMMDD").fromNow() + ")" + '</span>';
+        //postsList += '</li>';
+
+
+
+        //https://stackoverflow.com/questions/1199352/smart-way-to-truncate-long-strings
+        //https://beutelevision.com/blog2/2011/06/17/get-the-first-n-words-with-javascript/
+
+        //NOTE: use variable data.posts in ZD
+        //$.getJSON('/api/v2/community/topics/{{id}}/posts.json?sort_by=updated_at', function (data) {
+            var postsList = '';
+        //    $.each(data.posts, function (idx, itm) {
+            $.each(posts, function(idx, itm) {
+                postsList += '<li>';
+                postsList += '<a class="govuk-link" href="' + itm.html_url + '" id="' + itm.id + '">' +
+                    itm.title + "" + '</a><span class="tl-text--grey">' + " (" + moment(moment(itm.updated_at).format("YYYYMMDD"), "YYYYMMDD").fromNow() + ")" + '</span>' +
+                    "<p>" + itm.details + '</p>' + 
+                    "<p class='tl-elided-para'>" + itm.details.truncate(40) + '</p>';
+                postsList += '</li>';
+                return idx < 1;
+            });
+
+            console.log(postsList);
+
+            //TODO: Use {{id}} only in ZD context
+            //document.getElementById("{{id}}slideContainer").innerHTML = postsList;
+            document.getElementById('60000750439slideContainer').innerHTML = postsList;
+            //});
+        /*
+        $.getJSON('/api/v2/community/topics/{{id}}/posts.json?sort_by=updated_at', function(data) {
+            var postsList = '';
+            $.each(data.posts, function(idx, itm) {
+                postsList += '<li>';
+                postsList += '<a class="govuk-link" href="' + itm.html_url + '" id="' + itm.id + '">' +
+                    itm.title + "" + '</a><span class="tl-text--grey">' + " (" + moment(moment(itm.updated_at).format("YYYYMMDD"), "YYYYMMDD").fromNow() + ")" + '</span>';
+                postsList += '</li>';
+                return idx < 1;
+            });
+            document.getElementById("{{id}}slideContainer").innerHTML = postsList;
+        });
+         */
+    </script>
 }

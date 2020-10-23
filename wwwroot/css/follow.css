@@ -1,0 +1,66 @@
+﻿body { }
+
+.tl-none {
+    display: none;
+}
+
+.section-subscribe {
+    margin-bottom: 0;
+}
+
+.button, .section-subscribe button
+{
+    background-color: transparent;
+    border: 1px solid #0072EF;
+    border-radius: 4px;
+    color: #0072EF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 2.34;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center;
+    transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+    user-select: none;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-touch-callout: none;
+}
+
+.tl-menu-container {
+    background: #fff;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    left: 0;
+    min-width: 170px;
+    outline: none;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.tl-menu-item-inner {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    padding: 7px 40px 7px 20px;
+    outline: none;
+    white-space: nowrap;
+}
+
+.tl-menu-tick-seperator {
+    display: inline-block;
+    width: 10px;
+}
+
+.tl-elided-para {
+    white-space: nowrap;
+    width: 100%; /* IE6 needs any width */
+    overflow: hidden; /* "overflow" value must be different from  visible"*/
+    -o-text-overflow: ellipsis; /* Opera < 11*/
+    text-overflow: ellipsis; /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
+}

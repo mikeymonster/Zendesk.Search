@@ -14,6 +14,11 @@
         "jquery.min.js",
         "jquery.js"
       ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "moment.js@2.27.0",
+      "destination": "wwwroot/lib/moment.js/"
     }
   ]
 }
